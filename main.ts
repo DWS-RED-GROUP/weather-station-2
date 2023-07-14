@@ -6,7 +6,8 @@ serial.onDataReceived(serial.delimiters(Delimiters.CarriageReturn), function () 
     humidity = rawData.substr(61, 2)
     airPressure = rawData.substr(65, 5)
     rain = rawData.substr(31, 4)
-    bluetooth.uartWriteLine("" + windDirection + "," + windSpeed + "," + convertToText(parseFloat(temp) / 10) + "," + humidity + "," + airPressure + "," + rain)
+    radio.sendString(rawData)
+    datalogger.log(datalogger.createCV("rawdata ", rawData))
 })
 let rain = ""
 let airPressure = ""
@@ -20,8 +21,9 @@ SerialPin.P13,
 SerialPin.P14,
 BaudRate.BaudRate9600
 )
-bluetooth.startUartService()
 serial.setRxBufferSize(74)
+radio.setGroup(142)
+radio.setTransmitPower(3)
 basic.forever(function () {
 	
 })

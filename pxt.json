@@ -1,10 +1,11 @@
 {
-    "name": "Weather Station",
+    "name": "Weather Station 3",
     "description": "",
     "dependencies": {
         "core": "*",
         "microphone": "*",
-        "bluetooth": "*"
+        "radio": "*",
+        "datalogger": "*"
     },
     "files": [
         "main.blocks",
